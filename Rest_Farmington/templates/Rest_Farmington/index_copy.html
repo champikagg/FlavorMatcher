@@ -1,0 +1,72 @@
+{% block content %}
+<body style="background-color:#FFFFD4;">
+	<div style="float:right;word-spacing:0;">
+		<a class="topnav" href="/default_home" target="_top">
+			<font face="Gabriola, Gabriola Handwriting, WhisperWrite, Brush Script MT" size=5 >
+			Home
+			</font>
+		</a>
+		<span style="letter-spacing:25px;">
+			|
+		</span>
+		<a class="topnav" href="/city_find" target="_top">
+			<font face="Gabriola, Gabriola Handwriting, WhisperWrite, Brush Script MT" size=5 >
+			City
+			</font>
+		</a>
+		<span style="letter-spacing:25px;">
+			|
+		</span>
+		<a class="topnav" href="/my_detail" target="_top">
+			<font face="Gabriola, Gabriola Handwriting, WhisperWrite, Brush Script MT" size=5 >
+			About 
+			</font>
+		</a>
+		<span style="letter-spacing:25px;">
+			|
+		</span>
+		<a class="topnav" href="/contactus" target="_top">
+			<font face="Gabriola, Gabriola Handwriting, WhisperWrite, Brush Script MT" size=5 >
+			Contact Us
+			</font>
+		</a>
+	</div>
+	
+    <div class="main">
+		<div id="container">
+			<br> </br>	
+			<!--div id="header" style="background-color:#FFA500;"-->
+			<h1 class="title">
+				<div align="center">
+					<font face="Lucida Calligraphy, Lucida Handwriting, WhisperWrite, Brush Script MT" size=10 > 
+					Welcome to Flavor Matchers 
+					</font>
+				</div>
+			</h1>
+		</div>
+		<br></br>
+		<img style = "float:left"src="http://www.scenicrimescapes.com.au/wp-content/uploads/2013/06/food-and-wine-cafes-pubs-restraurants-scenic-rim-gold-coast-hinterland.jpg" 
+			width="700" height="350">
+		<form action="">
+			<div align="center">
+			<br></br>
+				<p style="line-height:3em;">
+					<font face="Gabriola, Gabriola Handwriting, WhisperWrite, Brush Script MT" size=5 >
+						Restaurant you wish you could go <input type="text" name="old_rest"><br>
+						Where you actually are <input type="text" name="new_rest"><br>
+						miles <input type="number" name="dist">
+						<button type="button" onclick="myFunction()">Search</button>
+					</font>
+				</p>
+			</div>
+		</form>        
+	</div>
+</body>
+{% endblock %}
+
+
+{% load staticfiles %}
+
+<!--link rel="stylesheet" type="text/css" href="{% static 'Rest_Farmington/style.css' %}" /-->
+<!--div id="footer" style="background-color:C0C0C0;clear:both;text-align:center;">
+Copyright © W3Schools.com</div-->

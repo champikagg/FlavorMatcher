@@ -1,0 +1,126 @@
+{% block content %}
+
+<body style="background-color:#FFFFD4;">
+	<div style="float:right;word-spacing:0;">
+		<a class="topnav" href="http://localhost:8000/Rest_Farmington/" target="_top">
+			<font face="Gabriola, Gabriola Handwriting, WhisperWrite, Brush Script MT" size=5 >
+			Home
+			</font>
+		</a>
+		<span style="letter-spacing:25px;">
+			|
+		</span>
+		<a class="topnav" href="http://localhost:8000/Rest_Farmington/city/" target="_top">
+			<font face="Gabriola, Gabriola Handwriting, WhisperWrite, Brush Script MT" size=5 >
+			City
+			</font>
+		</a>
+		<span style="letter-spacing:25px;">
+			|
+		</span>
+		<a class="topnav" href="http://localhost:8000/Rest_Farmington/about/" target="_top">
+			<font face="Gabriola, Gabriola Handwriting, WhisperWrite, Brush Script MT" size=5 >
+			About 
+			</font>
+		</a>
+		<span style="letter-spacing:25px;">
+			|
+		</span>
+		<a class="topnav" href="http://localhost:8000/Rest_Farmington/contactus/" target="_top">
+			<font face="Gabriola, Gabriola Handwriting, WhisperWrite, Brush Script MT" size=5 >
+			Contact Us
+			</font>
+		</a>
+	</div>
+	
+    <div class="main">
+		<div id="container">
+			<br> </br>	
+			<!--div id="header" style="background-color:#FFA500;"-->
+			<h1 class="title">
+				<div align="center">
+					<font face="Lucida Calligraphy" size=10 > 
+					Welcome to Flavor Matcher
+					</font>
+				</div>
+			</h1>
+		</div>
+		<br></br>
+		<img style = "float:left"src="http://www.scenicrimescapes.com.au/wp-content/uploads/2013/06/food-and-wine-cafes-pubs-restraurants-scenic-rim-gold-coast-hinterland.jpg" 
+			width="700" height="350">
+		<form method="get" action ="maps">
+			<div align="center">
+			<br></br>
+				<p style="line-height:3em;">
+					<font face="Gabriola, Gabriola Handwriting, WhisperWrite, Brush Script MT" size=5 >
+						{% csrf_token %}
+						Restaurant you wish you could go 
+						
+						<input type="text" id="restaurant" name="restaurant"><br>
+						Where you actually are 
+						
+						<input type="text" id="zipcode" name="zipcode" ><br>
+						miles 
+						
+						<input type="text" id="miles" name="miles" >
+						
+						
+						<input type="submit" name="submit" value="Submit" id = "submit"/>
+						
+						<p class="lead" id="output_results"></p>
+					<!--	<script>
+						(function (global) {
+							document.getElementById("save").addEventListener("click", function () {
+							global.localStorage.setItem("restaurant", document.getElementById("output").value);
+							}, false);
+						}(window));
+						</script>-->
+						<!--<button type="button" onclick="myFunction()">Search</button>-->
+					</font>
+				</p>
+			</div>
+		</form>        
+	</div>
+	
+</body>
+{% endblock %}
+{% block scripts %}
+<script>
+    // Search send (press enter) - jquery
+    // Wait til page load is ready
+    $(document).ready(function(){
+      console.log( "ready!" );
+      //When the button with id find_button is clicked then do these actions
+      $('#find_button').click(function() {
+         //Collect the values in the form fields with ids of restaurant_name, miles, and zipcode
+         var restaurant = $('#restaurant_name').val();
+         var miles = $('#miles').val();
+         var zipcode = $('#zipcode').val();
+         //Call the getRestaurant function in data.js with the input values
+         getRestaurant(restaurant, zipcode, miles);
+         window.location.href = 'maps'
+      });
+    });
+  </script>
+<script>
+    $('#miles').typeahead({
+    name: 'miles',
+    //prefetch: '/q?miles=B',
+    remote: '/json/miles?q=%QUERY',
+    limit: 10
+  });
+
+    $('#zipcode').typeahead({
+    name: 'address',
+    //prefetch: '/q?address=B',
+    remote: '/json/address?q=%QUERY',
+    limit: 10
+  });
+</script>
+{% endblock %}
+
+{% load staticfiles %}
+
+<!--link rel="stylesheet" type="text/css" href="{% static 'Rest_Farmington/style.css' %}" /-->
+<!--div id="footer" style="background-color:C0C0C0;clear:both;text-align:center;">
+Copyright © W3Schools.com</div-->

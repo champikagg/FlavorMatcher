@@ -1,0 +1,23 @@
+<html>
+<script LANGUAGE="JavaScript">
+function getParams(){
+var idx = document.URL.indexOf('?');
+var params = new Array();
+if (idx != -1) {
+var pairs = document.URL.substring(idx+1, document.URL.length).split('&');
+for (var i=0; i<pairs.length; i++){
+nameVal = pairs[i].split('=');
+params[nameVal[0]] = nameVal[1];
+}
+}
+return params;
+}
+params = getParams();
+new_city = unescape(params["new_city"]);
+old_rest = unescape(params["old_rest"]);
+dist_miles = unescape(params["dist_miles"]);
+document.write("you are in  " + new_city + "<br>");
+document.write("you like " + old_rest + "<br>");
+document.write("with in " + dist_miles + " miles" + "<br>");
+</script>
+</html>
