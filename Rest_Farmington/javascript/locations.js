@@ -16,23 +16,21 @@ var map;
 // Javascript to get restaurant from page
 function getRestaurant(restaurant, zipcode, miles) {
     //Log inputs to console
-    //restaurant = html_entity_decode(restaurant)
+   
     restaurant = $('<div />').html(restaurant).text();
     restaurant = restaurant.replace("&","%26");
     restaurant = restaurant.replace("+","%2B");
     console.log(("Input is restaurant = " + restaurant + ", miles = " + miles + " and zipcode = " + zipcode));
-    //Go to the page /restaurant (see drive_app.py) and pass in the arguments restaurant and zipcode
     console.log("/restaurant?restaurant="+restaurant+"&miles="+miles+"&zipcode="+zipcode)
     $.get("/restaurant?restaurant="+restaurant+"&miles="+miles+"&zipcode="+zipcode, function(result) {
 	    //Log the output to console
 	    console.log("Output is = " + result);
 	    //Fill in the results that will go on the page
-	    //var parsedJson = $.getJSON(result)
 	    deleteMarkers()
 	    parsedJson = eval(result);
 	    console.log("The output" + parsedJson)
 	    console.log(parsedJson)
-	    names = "<big>Top Restaurants:<br>"
+	    names = "<big>Closest restaurant:<br>"
 		//coordinates = []
 	    avg_latitude = 0
 	    avg_longitude = 0
@@ -74,7 +72,7 @@ function initialize() {
     geocoder = new google.maps.Geocoder();
     var mapOptions = {
 	center: new google.maps.LatLng(42.504939, -83.346878),
-	zoom: 13
+	zoom: 10
     }
     map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
     console.log('Besflkdadf')
@@ -105,7 +103,7 @@ function addMarker() {
 	    draggable: false,
 	    icon: image,
 	    animation: google.maps.Animation.DROP,
-	    title:"Restaurant #" + (parseInt(iterator+1))
+	    title:"restaurant #" + (parseInt(iterator+1))
 	});
     markers.push(marker)
 	google.maps.event.addListener(marker, 'click', function() {

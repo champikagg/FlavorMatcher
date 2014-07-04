@@ -2,7 +2,7 @@
 
 <body style="background-color:#FFFFD4;">
 	<div style="float:right;word-spacing:0;">
-		<a class="topnav" href="http://localhost:8000/Rest_Farmington/" target="_top">
+		<a class="topnav" href="http://localhost:8000/" target="_top">
 			<font face="Gabriola, Gabriola Handwriting, WhisperWrite, Brush Script MT" size=5 >
 			Home
 			</font>
@@ -10,7 +10,7 @@
 		<span style="letter-spacing:25px;">
 			|
 		</span>
-		<a class="topnav" href="http://localhost:8000/Rest_Farmington/city/" target="_top">
+		<a class="topnav" href="http://localhost:8000/city/" target="_top">
 			<font face="Gabriola, Gabriola Handwriting, WhisperWrite, Brush Script MT" size=5 >
 			City
 			</font>
@@ -18,7 +18,7 @@
 		<span style="letter-spacing:25px;">
 			|
 		</span>
-		<a class="topnav" href="http://localhost:8000/Rest_Farmington/about/" target="_top">
+		<a class="topnav" href="http://localhost:8000/about/" target="_top">
 			<font face="Gabriola, Gabriola Handwriting, WhisperWrite, Brush Script MT" size=5 >
 			About 
 			</font>
@@ -26,7 +26,7 @@
 		<span style="letter-spacing:25px;">
 			|
 		</span>
-		<a class="topnav" href="http://localhost:8000/Rest_Farmington/contactus/" target="_top">
+		<a class="topnav" href="http://localhost:8000/contactus/" target="_top">
 			<font face="Gabriola, Gabriola Handwriting, WhisperWrite, Brush Script MT" size=5 >
 			Contact Us
 			</font>
@@ -39,8 +39,8 @@
 			<!--div id="header" style="background-color:#FFA500;"-->
 			<h1 class="title">
 				<div align="center">
-					<font face="Lucida Calligraphy" size=10 > 
-					Welcome to Flavor Matcher
+					<font face="Lucida Calligraphy" size=5 > 
+					The Flavor Matcher
 					</font>
 				</div>
 			</h1>
@@ -93,7 +93,7 @@
       //When the button with id find_button is clicked then do these actions
       $('#find_button').click(function() {
          //Collect the values in the form fields with ids of restaurant_name, miles, and zipcode
-         var restaurant = $('#restaurant_name').val();
+         var restaurant = $('#restaurant').val();
          var miles = $('#miles').val();
          var zipcode = $('#zipcode').val();
          //Call the getRestaurant function in data.js with the input values
