@@ -1,0 +1,113 @@
+{% block content %}
+
+<body style="background-color:#FFFFD4;">
+	<div style="float:right;word-spacing:0;">
+		<a class="topnav" href="/" target="_top">
+			<font face="Gabriola, Gabriola Handwriting, WhisperWrite, Brush Script MT" size=5 >
+			Home
+			</font>
+		</a>
+		<span style="letter-spacing:25px;">
+			|
+		</span>
+		<a class="topnav" href="/city/" target="_top">
+			<font face="Gabriola, Gabriola Handwriting, WhisperWrite, Brush Script MT" size=5 >
+			City
+			</font>
+		</a>
+		<span style="letter-spacing:25px;">
+			|
+		</span>
+		<a class="topnav" href="/about/" target="_top">
+			<font face="Gabriola, Gabriola Handwriting, WhisperWrite, Brush Script MT" size=5 >
+			About 
+			</font>
+		</a>
+		<span style="letter-spacing:25px;">
+			|
+		</span>
+		<a class="topnav" href="https://github.com/champikagg/FlavorMatcher" target="_top">
+			<font face="Gabriola, Gabriola Handwriting, WhisperWrite, Brush Script MT" size=5 >
+			GitHub
+			</font>
+		</a>
+	</div>
+	
+    <div class="main">
+		<div id="container">
+			<br> </br>	
+
+			<h1 class="title">
+				<div align="center">
+					<font face="Lucida Calligraphy" size=5 > 
+					The Flavor Matcher
+					</font>
+				</div>
+			</h1>
+		</div>
+		<br></br>
+		<img style = "float:left"src="http://www.scenicrimescapes.com.au/wp-content/uploads/2013/06/food-and-wine-cafes-pubs-restraurants-scenic-rim-gold-coast-hinterland.jpg" 
+			width="700" height="350">
+		<form method="get" action ="maps">
+			<div align="center">
+			<br></br>
+				<p style="line-height:3em;">
+					<font face="Gabriola, Gabriola Handwriting, WhisperWrite, Brush Script MT" size=5 >
+						{% csrf_token %}
+						Restaurant you wish you could go 
+						
+						<input type="text" id="restaurant" name="restaurant" placeholder="eg : hong hua, taste of china"><br>
+						Where you actually are 
+						
+						<input type="text" id="zipcode" name="zipcode" placeholder="eg : 48334"><br>
+						miles 
+						
+						<input type="text" id="miles" name="miles" >
+						
+						
+						<input type="submit" name="submit" value="Submit" id = "submit"/>
+						
+						<p class="lead" id="output_results"></p>
+	
+					</font>
+				</p>
+			</div>
+		</form>        
+	</div>
+	
+</body>
+{% endblock %}
+{% block scripts %}
+<script>
+
+    $(document).ready(function(){
+      console.log( "ready!" );
+      //When the button with id find_button is clicked then do these actions
+      $('#find_button').click(function() {
+         //Collect the values in the form fields with ids of restaurant_name, miles, and zipcode
+         var restaurant = $('#restaurant').val();
+         var miles = $('#miles').val();
+         var zipcode = $('#zipcode').val();
+         getRestaurant(restaurant, zipcode, miles);
+         window.location.href = 'maps'
+      });
+    });
+  </script>
+<script>
+    $('#miles').typeahead({
+    name: 'miles',
+    remote: '/json/miles?q=%QUERY',
+    limit: 10
+  });
+
+    $('#zipcode').typeahead({
+    name: 'address',
+    remote: '/json/address?q=%QUERY',
+    limit: 10
+  });
+</script>
+{% endblock %}
+
+{% load staticfiles %}
+
+
